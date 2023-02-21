@@ -5,18 +5,10 @@ def test_standard_user_login(get_login_page, get_user_data):
 
     login_page = get_login_page
 
-    login_page.fill_in_user(get_user_data["user_1"])
-    sleep(1)
-
-    login_page.fill_in_pwd(get_user_data["pwd"])
-    sleep(1)
-
-    login_page.click_login_button()
-    sleep(1)
+    login_page.log_in_user(get_user_data["user_1"], get_user_data["pwd"])
 
     # Sprawdzenie czy przechodzimy na podstronę Inventory
     assert login_page.get_url() == 'https://www.saucedemo.com/inventory.html'
-
 
 def test_failed_user_login(get_login_page, get_user_data):
 

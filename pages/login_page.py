@@ -49,6 +49,11 @@ class LoginPage(BasePage):
     def click_login_button(self):
         self.driver.find_element(By.NAME, "login-button").click()
 
+    def log_in_user(self, user, pwd):
+        self.fill_in_user(user)
+        self.fill_in_pwd(pwd)
+        self.click_login_button()
+
     def get_url(self):
         return self.driver.current_url
 
