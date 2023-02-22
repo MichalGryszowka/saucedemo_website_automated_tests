@@ -1,10 +1,12 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.options import Options
 
-USER_LOCATOR = (By.ID, "user-name")
+USER_NAME_LOCATOR = (By.ID, "user-name")
 PWD_LOCATOR = (By.ID, "password")
+LOGIN_BUTTON_LOCATOR = (By.NAME, "login-button")
+ERROR_CONTAINER_LOCATOR = (By.CLASS_NAME, 'error-message-container')
+ERROR_CROSS_BUTTON = (By.CLASS_NAME, 'error-button')
 
 
 class BasePage:
@@ -18,36 +20,25 @@ class BasePage:
         full_url = self.base_url + self.url
         self.driver.get(full_url)
 
-    def get_input_form_text_value(self, locator: tuple[By, str]) -> str | None:
-        form_object = self.driver.find_element(*locator)
-        return form_object.get_attribute("value")
-
 
 class LoginPage(BasePage):
     def __init__(self, driver, url=''):
         super().__init__(driver, url)
 
-    def get_text(self, locator: tuple[By, str]) -> str | None:
-        form_object = self.driver.find_element(*locator)
-        return form_object.get_attribute("value")
-
     def get_user_form(self):
-        return self.driver.find_element(By.ID, "user-name")
+        return self.driver.find_element(*USER_NAME_LOCATOR)
 
     def fill_in_user(self, user):
         self.get_user_form().send_keys(user)
 
-    def get_text_user(self):
-        return self.get_text(USER_LOCATOR)
-
     def get_pwd_form(self):
-        return self.driver.find_element(By.ID, "password")
+        return self.driver.find_element(*PWD_LOCATOR)
 
     def fill_in_pwd(self, password):
         self.get_pwd_form().send_keys(password)
 
     def click_login_button(self):
-        self.driver.find_element(By.NAME, "login-button").click()
+        self.driver.find_element(*LOGIN_BUTTON_LOCATOR).click()
 
     def log_in_user(self, user, pwd):
         self.fill_in_user(user)
@@ -58,19 +49,20 @@ class LoginPage(BasePage):
         return self.driver.current_url
 
     def find_error_frame(self):
-        return self.driver.find_element(By. CLASS_NAME, 'error-message-container')
+        return self.driver.find_element(*ERROR_CONTAINER_LOCATOR)
 
     def get_error_message(self):
         error_msg = self.find_error_frame()
         return error_msg.get_attribute('innerText')
 
-    def click_red_cross_button_error(self):
-        self.driver.find_element(By.CLASS_NAME, 'error-button').click()
+    def click_error_cross_button(self):
+        self.driver.find_element(*ERROR_CROSS_BUTTON).click()
 
-    # DO PRZEGADANIA NA LEKCJI
+    def wait_for_error_frame_to_disappear(self):
+        return WebDriverWait(self.driver, 2).until_not(EC.presence_of_element_located(self.get_error_message()))
 
     def wait_for_delay_user_to_log_on(self):
-        element = WebDriverWait(self.driver, 2).until(EC.presence_of_element_located((By.XPATH, '/html/body/div/div/div/div[1]/div[2]/span')))
+        return WebDriverWait(self.driver, 2).until_not(EC.presence_of_element_located((By.ID, 'login_button_container')))
 
 
 
