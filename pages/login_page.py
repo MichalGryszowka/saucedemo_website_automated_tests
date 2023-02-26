@@ -7,13 +7,14 @@ PWD_LOCATOR = (By.ID, "password")
 LOGIN_BUTTON_LOCATOR = (By.NAME, "login-button")
 ERROR_CONTAINER_LOCATOR = (By.CLASS_NAME, 'error-message-container')
 ERROR_CROSS_BUTTON = (By.CLASS_NAME, 'error-button')
+LOGIN_BUTTON_FRAME_LOCATOR = (By.ID, 'login_button_container')
 
 
 class BasePage:
     def __init__(self, driver, url: str):
         self.driver = driver
-        self.url = url
         self.base_url = 'https://www.saucedemo.com/'
+        self.url = url
         self.get()
 
     def get(self):
@@ -52,8 +53,7 @@ class LoginPage(BasePage):
         return self.driver.find_element(*ERROR_CONTAINER_LOCATOR)
 
     def get_error_message(self):
-        error_msg = self.find_error_frame()
-        return error_msg.get_attribute('innerText')
+        return self.find_error_frame().get_attribute('innerText')
 
     def click_error_cross_button(self):
         self.driver.find_element(*ERROR_CROSS_BUTTON).click()
@@ -62,7 +62,7 @@ class LoginPage(BasePage):
         return WebDriverWait(self.driver, 2).until_not(EC.presence_of_element_located(self.get_error_message()))
 
     def wait_for_delay_user_to_log_on(self):
-        return WebDriverWait(self.driver, 2).until_not(EC.presence_of_element_located((By.ID, 'login_button_container')))
+        return WebDriverWait(self.driver, 2).until_not(EC.presence_of_element_located(LOGIN_BUTTON_FRAME_LOCATOR))
 
 
 

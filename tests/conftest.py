@@ -5,8 +5,9 @@ from selenium.webdriver.chrome import options
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.login_page import LoginPage
-from pages.standard_user_inventory_page import StdUserInvPage
-from selenium.webdriver.chrome.options import Options
+from pages.std_user_inventory_page import StdUserInvPage
+from pages.std_user_cart_page import StdUserCartPage
+from pages.checkout_step_1_page import CheckoutSep1Page
 
 
 @fixture
@@ -24,6 +25,16 @@ def get_login_page(init_driver):
 @fixture
 def get_std_user_inv_page(init_driver):
     return StdUserInvPage(init_driver)
+
+
+@fixture
+def get_std_user_cart_page(init_driver):
+    return StdUserCartPage(init_driver)
+
+
+@fixture
+def get_checkout_step_1_page(init_driver):
+    return CheckoutSep1Page(init_driver)
 
 
 @fixture

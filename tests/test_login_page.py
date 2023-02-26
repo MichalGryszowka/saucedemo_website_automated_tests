@@ -45,5 +45,5 @@ def test_delay_user_login(get_login_page, get_user_data):
     # Sprawdzenie czy przechodzimy na podstronę Inventory
     assert login_page.get_url() == 'https://www.saucedemo.com/inventory.html'
 
-    # To jest źle. Funkcja powinna zwracać TimeoutExceptionError a nie True bo strona ładuje się dłużej niż zadane 2 sec
+    # To jest źle. Funkcja nie powinna zwracać True bo strona ładuje się dłużej niż zadane 2 sec
     assert login_page.wait_for_delay_user_to_log_on() is True
