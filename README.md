@@ -6,7 +6,6 @@
 * [Technologies Used](#technologies-used)
 * [Features](#features)
 * [Project Status](#project-status)
-* [Acknowledgements](#acknowledgements)
 * [Contact](#contact)
 
 
@@ -26,10 +25,6 @@
 
 ## Project Status
 - Still under development
-
-
-## Acknowledgements
-- Thanks to my mentor for teaching me how to do it
 
 
 ## Contact
