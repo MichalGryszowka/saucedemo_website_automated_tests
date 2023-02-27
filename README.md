@@ -1,0 +1,36 @@
+# Saucedemo website automated test
+> My first try of autmated testing trained on www.saucedemo.com website
+
+## Table of Contents
+* [General Info](#general-information)
+* [Technologies Used](#technologies-used)
+* [Features](#features)
+* [Project Status](#project-status)
+* [Acknowledgements](#acknowledgements)
+* [Contact](#contact)
+
+
+## General Information
+It's the first automated test I wrote using Python with Selenium
+
+
+## Technologies Used
+- Python - version 3.10.2
+- Selenium
+- Pycharm
+
+
+## Features
+- Testing each page separately
+
+
+## Project Status
+Still under development
+
+
+## Acknowledgements
+- Thanks to my mentor for inspiring me to do this task
+
+
+## Contact
+Created by michal.gryszowka@gmail.com
