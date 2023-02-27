@@ -11,7 +11,7 @@
 
 
 ## General Information
-It's the first automated test I wrote using Python with Selenium
+- It's the first automated test I wrote using Python with Selenium
 
 
 ## Technologies Used
@@ -25,12 +25,12 @@ It's the first automated test I wrote using Python with Selenium
 
 
 ## Project Status
-Still under development
+- Still under development
 
 
 ## Acknowledgements
-- Thanks to my mentor for inspiring me to do this task
+- Thanks to my mentor for teaching me how to do it
 
 
 ## Contact
-Created by michal.gryszowka@gmail.com
+- Created by michal.gryszowka@gmail.com
