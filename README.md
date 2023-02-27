@@ -1,5 +1,5 @@
 # Saucedemo website automated test
-> My first try of autmated testing trained on www.saucedemo.com website
+> My first try of autmated test trained on www.saucedemo.com website
 
 ## Table of Contents
 * [General Info](#general-information)
