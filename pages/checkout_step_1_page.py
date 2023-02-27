@@ -8,7 +8,7 @@ ZIP_CODE_LOCATOR = (By.ID, 'postal-code')
 CONTINUE_LOCATOR = (By.ID, 'continue')
 
 
-class CheckoutSep1Page(BasePage):
+class CheckoutStep1Page(BasePage):
     def __init__(self, driver, url='/checkout-step-one.html'):
         super().__init__(driver, url)
 
@@ -26,3 +26,6 @@ class CheckoutSep1Page(BasePage):
 
     def click_continue(self):
         self.get_input_frame(CONTINUE_LOCATOR).click()
+
+    def get_url(self):
+        return self.driver.current_url

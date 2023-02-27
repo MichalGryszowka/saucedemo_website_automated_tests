@@ -1,5 +1,8 @@
-def test_checkout_step_1_page(get_user_data, get_login_page, get_std_user_inv_page,
-                              get_std_user_cart_page, get_checkout_step_1_page):
+from time import sleep
+
+def test_checkout_step_2_page(get_user_data, get_login_page, get_std_user_inv_page,
+                              get_std_user_cart_page, get_checkout_step_1_page,
+                              get_checkout_step_2_page, get_complete_page):
 
     name = 'Jan'
 
@@ -14,6 +17,10 @@ def test_checkout_step_1_page(get_user_data, get_login_page, get_std_user_inv_pa
     std_user_cart_page = get_std_user_cart_page
 
     checkout_step1_page = get_checkout_step_1_page
+
+    checkout_step2_page = get_checkout_step_2_page
+
+    complete_page = get_complete_page
 
     login_page.log_in_user(get_user_data["user_1"], get_user_data["pwd"])
 
@@ -33,6 +40,11 @@ def test_checkout_step_1_page(get_user_data, get_login_page, get_std_user_inv_pa
 
     checkout_step1_page.click_continue()
 
+    checkout_step2_page.click_finish()
+
+    complete_page.click_back_home()
+
+    complete_page.get_url()
+
     # sprawdzenie czy przechodzimy na wlasciwa podstronę
-    assert checkout_step1_page.get_url() == 'https://www.saucedemo.com/checkout-step-two.html'
-    
+    assert checkout_step2_page.get_url() == 'https://www.saucedemo.com/inventory.html'
