@@ -1,5 +1,3 @@
-from time import sleep
-
 def test_checkout_step_2_page(get_user_data, get_login_page, get_std_user_inv_page,
                               get_std_user_cart_page, get_checkout_step_1_page,
                               get_checkout_step_2_page):

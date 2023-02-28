@@ -1,5 +1,6 @@
 from selenium.webdriver.common.by import By
 from pages.login_page import BasePage
+
 FINISH_LOCATOR = (By.ID, 'finish')
 
 
