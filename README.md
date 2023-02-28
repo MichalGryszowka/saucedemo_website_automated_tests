@@ -26,6 +26,11 @@
 ## Project Status
 - Still under development
 
+## Installation
+```commandline
+pip install -r requirements.txt
+```
+
 
 ## Contact
 - Created by michal.gryszowka@gmail.com
