@@ -12,6 +12,11 @@ from pages.complete_page import CompletePage
 
 
 @fixture
+def main():
+    pass
+
+
+@fixture
 def init_driver():
     driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
     yield driver
