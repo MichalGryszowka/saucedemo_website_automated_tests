@@ -11,5 +11,3 @@ class CheckoutStep2Page(BasePage):
     def click_finish(self):
         self.driver.find_element(By.ID, 'finish').click()
 
-    def get_url(self):
-        return self.driver.current_url

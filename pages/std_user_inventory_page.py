@@ -11,6 +11,7 @@ class StdUserInvPage(BasePage):
 
     def add_product_to_cart(self, locator: tuple[By, str]):
         self.driver.find_element(*locator).click()
+        self.driver.find_elements(*locator)
 
     def add_backpack_to_cart(self):
         self.add_product_to_cart(BACKPACK_ADD_TO_CART_LOCATOR)
@@ -20,9 +21,9 @@ class StdUserInvPage(BasePage):
 
     def go_to_cart(self):
         self.driver.find_element(By. CLASS_NAME, 'shopping_cart_link').click()
+        return StdUserCartPage(self.driver)
 
-    def get_url(self):
-        return self.driver.current_url
+
 
 
 

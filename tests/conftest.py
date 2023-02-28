@@ -50,6 +50,6 @@ def get_complete_page(init_driver):
 
 @fixture
 def get_user_data():
-    with open(r'C:\Users\HP\PycharmProjects\Saucedemo\data\login_creds.json') as f:
+    with open("../data/login_creds.json") as f:
         data = json.load(f)
         return data

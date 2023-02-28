@@ -15,11 +15,16 @@ class BasePage:
         self.driver = driver
         self.base_url = 'https://www.saucedemo.com/'
         self.url = url
+
         self.get()
 
     def get(self):
         full_url = self.base_url + self.url
-        self.driver.get(full_url)
+        if self.url not in self.driver.current_url:
+            self.driver.get(full_url)
+
+    def get_url(self):
+        return self.driver.current_url
 
 
 class LoginPage(BasePage):
@@ -39,12 +44,15 @@ class LoginPage(BasePage):
         self.get_pwd_form().send_keys(password)
 
     def click_login_button(self):
+        from pages.std_user_inventory_page import StdUserInvPage
+
         self.driver.find_element(*LOGIN_BUTTON_LOCATOR).click()
+        return StdUserInvPage(self.driver)
 
     def log_in_user(self, user, pwd):
         self.fill_in_user(user)
         self.fill_in_pwd(pwd)
-        self.click_login_button()
+        return self.click_login_button()
 
     def get_url(self):
         return self.driver.current_url
