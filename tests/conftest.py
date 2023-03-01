@@ -9,11 +9,7 @@ from pages.std_user_cart_page import StdUserCartPage
 from pages.checkout_step_1_page import CheckoutStep1Page
 from pages.checkout_step_2_page import CheckoutStep2Page
 from pages.complete_page import CompletePage
-
-
-@fixture
-def main():
-    pass
+from pages.login_page import BasePage
 
 
 @fixture
@@ -51,10 +47,3 @@ def get_checkout_step_2_page(init_driver):
 @fixture
 def get_complete_page(init_driver):
     return CompletePage(init_driver)
-
-
-@fixture
-def get_user_data():
-    with open("../data/login_creds.json") as f:
-        data = json.load(f)
-        return data

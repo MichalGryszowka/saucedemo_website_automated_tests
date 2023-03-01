@@ -1,6 +1,8 @@
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
+from pages.base_page import BasePage
+from pages.std_user_inventory_page import StdUserInvPage
 
 USER_NAME_LOCATOR = (By.ID, "user-name")
 PWD_LOCATOR = (By.ID, "password")
@@ -10,25 +12,8 @@ ERROR_CROSS_BUTTON = (By.CLASS_NAME, 'error-button')
 LOGIN_BUTTON_FRAME_LOCATOR = (By.ID, 'login_button_container')
 
 
-class BasePage:
-    def __init__(self, driver, url: str):
-        self.driver = driver
-        self.base_url = 'https://www.saucedemo.com/'
-        self.url = url
-
-        self.get()
-
-    def get(self):
-        full_url = self.base_url + self.url
-        if self.url not in self.driver.current_url:
-            self.driver.get(full_url)
-
-    def get_url(self):
-        return self.driver.current_url
-
-
 class LoginPage(BasePage):
-    def __init__(self, driver, url=''):
+    def __init__(self, driver, url=' '):
         super().__init__(driver, url)
 
     def get_user_form(self):
@@ -44,18 +29,13 @@ class LoginPage(BasePage):
         self.get_pwd_form().send_keys(password)
 
     def click_login_button(self):
-        from pages.std_user_inventory_page import StdUserInvPage
-
         self.driver.find_element(*LOGIN_BUTTON_LOCATOR).click()
-        return StdUserInvPage(self.driver)
 
     def log_in_user(self, user, pwd):
         self.fill_in_user(user)
         self.fill_in_pwd(pwd)
-        return self.click_login_button()
-
-    def get_url(self):
-        return self.driver.current_url
+        self.click_login_button()
+        return StdUserInvPage(self.driver)
 
     def find_error_frame(self):
         return self.driver.find_element(*ERROR_CONTAINER_LOCATOR)
