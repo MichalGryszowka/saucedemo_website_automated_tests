@@ -1,6 +1,5 @@
 from technical.shop_user_model import UserName
 from technical.shop_user_model import Password
-from pages.std_user_inventory_page import StdUserInvPage
 
 
 def test_standard_user_login(get_login_page):
