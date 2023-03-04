@@ -11,16 +11,19 @@
 
 ## General Information
 - It's the first automated test I wrote using Python with Selenium
+- I wanted to learn how to build test with correct Page Object Model
 
 
 ## Technologies Used
-- Python - version 3.10.2
+- Python
 - Selenium
 - Pycharm
 
 
 ## Features
-- Testing each page separately
+- Currently there are 2 tests available:
+    - Login page test
+    - Buying 2 products tests
 
 
 ## Project Status
