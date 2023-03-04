@@ -8,7 +8,7 @@ def test_standard_user_login(get_login_page):
 
     login_page.log_in_user(UserName.user_1, Password.pwd)
 
-    # Checking if after logging in we go to Inventory page
+    # Checking if after logging we go to Inventory page
     assert login_page.get_url() == 'https://www.saucedemo.com/inventory.html'
 
 
@@ -36,7 +36,7 @@ def test_problem_user_login(get_login_page):
 
     login_page.log_in_user(UserName.user_3, Password.pwd)
 
-    # Checking if after logging in we go to Inventory page
+    # Checking if after logging we go to Inventory page
     assert login_page.get_url() == 'https://www.saucedemo.com/inventory.html'
 
 
@@ -46,7 +46,7 @@ def test_delay_user_login(get_login_page):
 
     login_page.log_in_user(UserName.user_4, Password.pwd)
 
-    # Checking if after logging in we go to Inventory page
+    # Checking if after logging we go to Inventory page
     assert login_page.get_url() == 'https://www.saucedemo.com/inventory.html'
 
     # Checking if login frame container disappears. This acts incorrectly

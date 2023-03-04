@@ -2,6 +2,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
 from pages.base_page import BasePage
+from pages.std_user_inventory_page import StdUserInvPage
 
 USER_NAME_LOCATOR = (By.ID, "user-name")
 PWD_LOCATOR = (By.ID, "password")
@@ -34,6 +35,8 @@ class LoginPage(BasePage):
         self.fill_in_user(user)
         self.fill_in_pwd(pwd)
         self.click_login_button()
+        if user != 'locked_out_user':
+            return StdUserInvPage(self.driver, self.driver.current_url)
 
     def find_error_frame(self):
         return self.driver.find_element(*ERROR_CONTAINER_LOCATOR)
