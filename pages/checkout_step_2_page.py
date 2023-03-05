@@ -13,3 +13,6 @@ class CheckoutStep2Page(BasePage):
         self.driver.find_element(*FINISH_LOCATOR).click()
         return CompletePage(self.driver, self.driver.current_url)
 
+
+
+
