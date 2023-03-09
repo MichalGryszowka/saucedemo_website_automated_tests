@@ -1,13 +1,10 @@
-from technical.shop_user_model import UserName
-from technical.shop_user_model import Password
 from pages.std_user_inventory_page import StdUserInvPage
+from technical.shop_user_model import UserName
 
 
-def test_buy_2_products_std_user(get_login_page):
+def test_buy_2_products_std_user(open_and_login_std_user):
 
-    login_page = get_login_page
-
-    std_user_inv_page = login_page.log_in_user(UserName.user_1, Password.pwd)
+    std_user_inv_page = open_and_login_std_user
 
     default_product_order = std_user_inv_page.get_list_of_products_names()
 
