@@ -1,4 +1,5 @@
 from selenium.webdriver.common.by import By
+from pages.complete_page import CompletePage
 from pages.login_page import BasePage
 
 FINISH_LOCATOR = (By.ID, 'finish')
@@ -9,7 +10,9 @@ class CheckoutStep2Page(BasePage):
         super().__init__(driver, url)
 
     def click_finish(self):
-        self.driver.find_element(By.ID, 'finish').click()
+        self.driver.find_element(*FINISH_LOCATOR).click()
+        return CompletePage(self.driver, self.driver.current_url)
 
-    def get_url(self):
-        return self.driver.current_url
+
+
+
