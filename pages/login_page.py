@@ -51,7 +51,7 @@ class LoginPage(BasePage):
         return WebDriverWait(self.driver, 2).until_not(EC.presence_of_element_located(self.get_error_message()))
 
     def wait_for_delay_user_to_log_on(self):
-        return WebDriverWait(self.driver, 2).until_not(EC.presence_of_element_located(LOGIN_BUTTON_FRAME_LOCATOR))
+        return WebDriverWait(self.driver, 7).until_not(EC.presence_of_element_located(LOGIN_BUTTON_LOCATOR))
 
 
 
