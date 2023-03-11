@@ -1,8 +1,6 @@
-from selenium.webdriver.common.by import By
-from pages.login_page import BasePage
 from pages.checkout_step_1_page import CheckoutStep1Page
-
-CHECKOUT_LOCATOR = (By. ID, 'checkout')
+from pages.login_page import BasePage
+from technical.locators import StdUserCartPageLocators
 
 
 class StdUserCartPage(BasePage):
@@ -10,5 +8,5 @@ class StdUserCartPage(BasePage):
         super().__init__(driver, url)
 
     def checkout(self):
-        self.driver.find_element(*CHECKOUT_LOCATOR).click()
+        self.driver.find_element(*StdUserCartPageLocators.CHECKOUT_LOCATOR).click()
         return CheckoutStep1Page(self.driver, self.driver.current_url)

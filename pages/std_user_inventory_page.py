@@ -1,14 +1,8 @@
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import Select
 from pages.base_page import BasePage
 from pages.std_user_cart_page import StdUserCartPage
-from selenium.webdriver.support.ui import Select
-
-BACKPACK_ADD_TO_CART_LOCATOR = (By.ID, 'add-to-cart-sauce-labs-backpack')
-TSHIRT_ADD_TO_CART_LOCATOR = (By.ID, 'add-to-cart-sauce-labs-bolt-t-shirt')
-SHOPPING_CART_LOCATOR = (By. CLASS_NAME, 'shopping_cart_link')
-SHOPPING_CART_BADGE_LOCATOR = (By. CLASS_NAME, 'shopping_cart_badge')
-INVENTORY_CONTAINER_LOCATOR = (By. CLASS_NAME, 'inventory_container')
-SORT_CONTAINER_LOCATOR = (By. CLASS_NAME, 'product_sort_container')
+from technical.locators import StdUserInventoryPageLocators
 
 
 class StdUserInvPage(BasePage):
@@ -19,17 +13,17 @@ class StdUserInvPage(BasePage):
         self.driver.find_element(*locator).click()
 
     def add_backpack_to_cart(self):
-        self.add_product_to_cart(BACKPACK_ADD_TO_CART_LOCATOR)
+        self.add_product_to_cart(StdUserInventoryPageLocators.BACKPACK_ADD_TO_CART_LOCATOR)
 
     def add_tshirt_to_cart(self):
-        self.add_product_to_cart(TSHIRT_ADD_TO_CART_LOCATOR)
+        self.add_product_to_cart(StdUserInventoryPageLocators.TSHIRT_ADD_TO_CART_LOCATOR)
 
     def check_qty_in_shopping_cart(self):
-        cart = self.driver.find_element(*SHOPPING_CART_BADGE_LOCATOR)
+        cart = self.driver.find_element(*StdUserInventoryPageLocators.SHOPPING_CART_BADGE_LOCATOR)
         return cart.get_attribute('innerText')
 
     def go_to_cart(self):
-        self.driver.find_element(*SHOPPING_CART_LOCATOR).click()
+        self.driver.find_element(*StdUserInventoryPageLocators.SHOPPING_CART_LOCATOR).click()
         return StdUserCartPage(self.driver, self.driver.current_url)
 
     @staticmethod
@@ -41,7 +35,7 @@ class StdUserInvPage(BasePage):
 
     def get_list_of_products(self):
         list_of_products = ''
-        all_products = self.driver.find_elements(*INVENTORY_CONTAINER_LOCATOR)
+        all_products = self.driver.find_elements(*StdUserInventoryPageLocators.INVENTORY_CONTAINER_LOCATOR)
         for product in all_products:
             list_of_products += product.text
         res = list_of_products.split()
@@ -64,15 +58,15 @@ class StdUserInvPage(BasePage):
         return final_list_of_prices
 
     def filter_name_z_to_a(self):
-        drop = Select(self.driver.find_element(*SORT_CONTAINER_LOCATOR))
+        drop = Select(self.driver.find_element(*StdUserInventoryPageLocators.SORT_CONTAINER_LOCATOR))
         drop.select_by_value('za')
 
     def filter_price_l_to_h(self):
-        drop = Select(self.driver.find_element(*SORT_CONTAINER_LOCATOR))
+        drop = Select(self.driver.find_element(*StdUserInventoryPageLocators.SORT_CONTAINER_LOCATOR))
         drop.select_by_value('lohi')
 
     def filter_price_h_to_l(self):
-        drop = Select(self.driver.find_element(*SORT_CONTAINER_LOCATOR))
+        drop = Select(self.driver.find_element(*StdUserInventoryPageLocators.SORT_CONTAINER_LOCATOR))
         drop.select_by_value('hilo')
 
 

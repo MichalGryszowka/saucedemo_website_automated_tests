@@ -3,8 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.service import Service as ChromeService
 from webdriver_manager.chrome import ChromeDriverManager
 from pages.login_page import LoginPage
-from technical.shop_user_model import UserName
 from technical.shop_user_model import Password
+from technical.shop_user_model import UserName
 
 
 @fixture

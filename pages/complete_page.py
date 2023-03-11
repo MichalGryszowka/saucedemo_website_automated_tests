@@ -1,7 +1,5 @@
-from selenium.webdriver.common.by import By
 from pages.login_page import BasePage
-
-FIRST_NAME_LOCATOR = (By.ID, 'back-to-products')
+from technical.locators import CompletePageLocators
 
 
 class CompletePage(BasePage):
@@ -9,4 +7,4 @@ class CompletePage(BasePage):
         super().__init__(driver, url)
 
     def click_back_home(self):
-        self.driver.find_element(*FIRST_NAME_LOCATOR).click()
+        self.driver.find_element(*CompletePageLocators.FIRST_NAME_LOCATOR).click()
