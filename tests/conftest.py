@@ -23,5 +23,3 @@ def get_login_page(init_driver):
 def open_and_login_std_user(get_login_page):
     std_user_inv_page = get_login_page.log_in_user(UserName.user_1, Password.pwd)
     return std_user_inv_page
-
-

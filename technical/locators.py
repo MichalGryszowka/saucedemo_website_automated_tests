@@ -10,13 +10,22 @@ class LoginPageLocators:
     LOGIN_BUTTON_FRAME_LOCATOR = (By.ID, 'login_button_container')
 
 
-class StdUserInventoryPageLocators:
-    BACKPACK_ADD_TO_CART_LOCATOR = (By.ID, 'add-to-cart-sauce-labs-backpack')
-    TSHIRT_ADD_TO_CART_LOCATOR = (By.ID, 'add-to-cart-sauce-labs-bolt-t-shirt')
+class HeaderStdUserInvPageLocators:
     SHOPPING_CART_LOCATOR = (By.CLASS_NAME, 'shopping_cart_link')
     SHOPPING_CART_BADGE_LOCATOR = (By.CLASS_NAME, 'shopping_cart_badge')
     INVENTORY_CONTAINER_LOCATOR = (By.CLASS_NAME, 'inventory_container')
     SORT_CONTAINER_LOCATOR = (By.CLASS_NAME, 'product_sort_container')
+
+
+class StdUserInvPageLocators:
+    BACKPACK_ADD_TO_CART_LOCATOR = (By.ID, 'add-to-cart-sauce-labs-backpack')
+    TSHIRT_ADD_TO_CART_LOCATOR = (By.ID, 'add-to-cart-sauce-labs-bolt-t-shirt')
+
+
+class FooterStdUserInvPageLocators:
+    TWITTER_ICON_LOCATOR = (By.XPATH, '//*[@id="page_wrapper"]/footer/ul/li[1]/a')
+    FACEBOOK_ICON_LOCATOR = (By.ID, '//*[@id="page_wrapper"]/footer/ul/li[2]/a')
+    LINKEDIN_ICON_LOCATOR = (By.ID, '//*[@id="page_wrapper"]/footer/ul/li[3]/a')
 
 
 class StdUserCartPageLocators:

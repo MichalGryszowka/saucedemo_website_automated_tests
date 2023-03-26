@@ -28,7 +28,9 @@ class LoginPage(BasePage):
         self.fill_in_user(user)
         self.fill_in_pwd(pwd)
         self.click_login_button()
-        if user != 'locked_out_user':
+        if user == 'locked_out_user':
+            return LoginPage(self.driver, self.driver.current_url)
+        else:
             return StdUserInvPage(self.driver, self.driver.current_url)
 
     def find_error_frame(self):
@@ -44,7 +46,7 @@ class LoginPage(BasePage):
         return WebDriverWait(self.driver, 2).until_not(EC.presence_of_element_located(self.get_error_message()))
 
     def wait_for_delay_user_to_log_on(self):
-        return WebDriverWait(self.driver, 7).until_not(EC.presence_of_element_located(LoginPageLocators.LOGIN_BUTTON_LOCATOR))
+        return WebDriverWait(self.driver, 1).until_not(EC.presence_of_element_located(LoginPageLocators.LOGIN_BUTTON_LOCATOR))
 
 
 
