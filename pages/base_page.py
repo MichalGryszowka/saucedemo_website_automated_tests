@@ -1,3 +1,7 @@
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+
+
 class BasePage:
     def __init__(self, driver, url: str):
         self.driver = driver
@@ -12,3 +16,7 @@ class BasePage:
 
     def get_url(self):
         return self.driver.current_url
+
+    def select_by(self, string: str, locator: tuple[By, str]):
+        drop = Select(self.driver.find_element(*locator))
+        drop.select_by_value(string)

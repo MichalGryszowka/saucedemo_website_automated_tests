@@ -11,6 +11,7 @@ class UserName:
     last_name: str = "Kowalski"
     zip_code: str = "00-666"
 
+
 @dataclass
 class Password:
     pwd: str = "secret_sauce"
